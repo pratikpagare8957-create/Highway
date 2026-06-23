@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratika - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: white;
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 50%;
+            bottom: -30px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(30px);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo-text {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 20px;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px 15px;
+            min-width: 80px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .countdown-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        .email-section {
+            animation: slideInUp 1.2s ease-out 0.4s both;
+        }
+
+        .email-section p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            transition: background 0.3s ease;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="email"]::placeholder {
+            color: #999;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: slideInUp 1.4s ease-out 0.6s both;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            border-color: white;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader.active {
+            display: block;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #ffd700;
+            min-height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .countdown {
+                gap: 10px;
+            }
+
+            .countdown-item {
+                min-width: 60px;
+                padding: 15px 10px;
+            }
+
+            .countdown-number {
+                font-size: 24px;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .logo-text {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <div class="logo-text">PRATIKA</div>
+            <p class="tagline">Premium Online Shopping Experience</p>
+        </div>
+
+        <h1>Coming Soon</h1>
+        <p class="subtitle">We're working hard to bring you an amazing shopping experience. Get ready for the best deals and exclusive products!</p>
+
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">0</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">0</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">0</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">0</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="email-section">
+            <p>Be the first to know when we launch!</p>
+            <form class="email-form" id="emailForm">
+                <input 
+                    type="email" 
+                    id="emailInput" 
+                    placeholder="Enter your email address" 
+                    required
+                >
+                <button type="submit" class="btn btn-primary">Notify Me</button>
+            </form>
+            <div class="loader" id="loader"></div>
+            <div class="message" id="message"></div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://facebook.com/pratika" class="social-icon" title="Facebook">f</a>
+            <a href="https://twitter.com/pratika" class="social-icon" title="Twitter">𝕏</a>
+            <a href="https://instagram.com/pratika" class="social-icon" title="Instagram">📷</a>
+            <a href="https://linkedin.com/company/pratika" class="social-icon" title="LinkedIn">in</a>
+        </div>
+    </div>
+
+    <script>
+        // Contact Information
+        const contactEmail = "pratikpagare009@gmail.com";
+        const siteName = "Pratika";
+
+        // Countdown Timer
+        function updateCountdown() {
+            // Set launch date to 60 days from now
+            const launchDate = new Date();
+            launchDate.setDate(launchDate.getDate() + 60);
+
+            function countdown() {
+                const now = new Date().getTime();
+                const distance = launchDate.getTime() - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.querySelector('.countdown').innerHTML = '<h2 style="color: #ffd700; width: 100%;">We\'re Live! 🎉</h2>';
+                }
+            }
+
+            countdown();
+            const countdownInterval = setInterval(countdown, 1000);
+        }
+
+        // Email Form Handler
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('emailInput').value;
+            const loader = document.getElementById('loader');
+            const message = document.getElementById('message');
+            const button = this.querySelector('button');
+
+            loader.classList.add('active');
+            message.textContent = '';
+            button.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                loader.classList.remove('active');
+                message.textContent = '✓ Thank you! Check your email for updates.';
+                message.style.color = '#90EE90';
+                document.getElementById('emailInput').value = '';
+                button.disabled = false;
+                
+                console.log(`Notification request from: ${email} for ${siteName}`);
+                
+                setTimeout(() => {
+                    message.textContent = '';
+                }, 5000);
+            }, 1500);
+        });
+
+        // Initialize countdown
+        updateCountdown();
+    </script>
+</body>
+</html>
