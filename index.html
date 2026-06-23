@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratik Ecommerce - Coming Soon</title>
+    <style>
+        :root {
+            --gh-bg: #0d1117;          
+            --gh-card-bg: #161b22;     
+            --gh-border: #30363d;      
+            --gh-text: #c9d1d9;        
+            --gh-link: #58a6ff;        
+            --gpt-green: #10a37f;      
+            --gpt-light-green: #1a7f64;
+            --white: #ffffff;
+            --danger: #f85149;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--gh-bg);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(16, 163, 127, 0.05) 0%, rgba(0,0,0,0) 70%);
+            top: -20%;
+            left: -10%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            background-color: var(--gh-card-bg);
+            border: 1px solid var(--gh-border);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .brand-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .icon-wrapper {
+            background-color: var(--gh-bg);
+            border: 1px solid var(--gh-border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper svg {
+            fill: var(--gpt-green);
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: var(--gpt-green);
+        }
+
+        .terminal-badge {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--gh-link);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        p {
+            color: var(--gh-text);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Countdown Style */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .countdown-box {
+            background: var(--gh-bg);
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            padding: 10px;
+            min-width: 70px;
+        }
+
+        .countdown-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--gpt-green);
+            font-family: ui-monospace, monospace;
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            color: var(--gh-text);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .code-preview {
+            background-color: var(--gh-bg);
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: left;
+            margin-bottom: 30px;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
+            font-size: 13px;
+            color: #79c0ff;
+        }
+
+        .code-preview span { color: #ff7b72; } 
+        .code-preview .string { color: #a5d6ff; } 
+        .code-preview .comment { color: #8b949e; } 
+
+        .notify-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            position: relative;
+        }
+
+        @media (min-width: 480px) {
+            .notify-form {
+                flex-direction: row;
+            }
+        }
+
+        .email-input {
+            flex: 1;
+            background-color: var(--gh-bg);
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: var(--white);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .email-input:focus {
+            border-color: var(--gpt-green);
+            box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.2);
+        }
+
+        .submit-btn {
+            background-color: var(--gpt-green);
+            color: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--gpt-light-green);
+        }
+
+        .message-banner {
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+            text-align: left;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .message-banner.success {
+            display: block;
+            background: rgba(16, 163, 127, 0.1);
+            border: 1px solid var(--gpt-green);
+            color: var(--gpt-green);
+        }
+
+        .footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--gh-border);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--gh-text);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--gpt-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .links {
+            font-size: 13px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .links a {
+            color: var(--gh-text);
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            color: var(--gh-link);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 163, 127, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 163, 127, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 163, 127, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow"></div>
+
+    <div class="container">
+        <div class="brand-header">
+            <div class="icon-wrapper">
+                <svg height="24" width="24" viewBox="0 0 16 16">
+                    <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v5.256a2.251 2.251 0 101.5 0V5.372zm8 5.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0-2.122A2.25 2.25 0 1011.5 6.5h-3A1.5 1.5 0 007 8v1.128a2.251 2.251 0 101.5 0V8a.25.25 0 01.25-.25h3a2.25 2.25 0 001.5-1.128z"></path>
+                </svg>
+            </div>
+            <div class="brand-name">Pratik <span>E-commerce</span></div>
+        </div>
+
+        <div class="terminal-badge">git checkout -b feature/launch</div>
+
+        <h1>The Intelligent Way to Build Commerce</h1>
+        <p>An AI-driven repository for everything you need to sell online. We are combining GitHub's robust structure with OpenAI's semantic models.</p>
+
+        <div class="countdown-container">
+            <div class="countdown-box"><div class="countdown-number" id="days">00</div><div class="countdown-label">Days</div></div>
+            <div class="countdown-box"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hrs</div></div>
+            <div class="countdown-box"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Min</div></div>
+            <div class="countdown-box"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Sec</div></div>
+        </div>
+
+        <div class="code-preview">
+            <span class="comment">// Connecting natural language to your global supply chain</span><br>
+            <span>const</span> shop = <span>new</span> PratikShop({ engine: <span class="string">"gpt-4o"</span>, scale: <span class="string">"infinite"</span> });<br>
+            shop.initializeStorefront();
+        </div>
+
+        <form id="launch-form" class="notify-form">
+            <input type="email" id="email-field" class="email-input" placeholder="username@domain.com" required>
+            <button type="submit" class="submit-btn">Request Access</button>
+        </form>
+        <div id="form-msg" class="message-banner"></div>
+
+        <div class="footer">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span>All systems operational</span>
+            </div>
+            <div class="links">
+                <a href="#repo">View Repository</a>
+                <a href="#docs">API Reference</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
